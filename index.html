@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>RoboCap Live Cameras</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="viewer-shell">
+    <header class="viewer-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">RC</span>
+        <span>RoboCap Live</span>
+      </div>
+      <form class="host-form" id="hostForm" autocomplete="off">
+        <label class="host-form-label" for="hostInput">Host</label>
+        <input
+          type="text"
+          id="hostInput"
+          name="host"
+          class="host-input"
+          placeholder="192.168.11.1"
+          inputmode="decimal"
+          spellcheck="false"
+          aria-describedby="hostHint"
+        >
+        <button type="submit" class="button secondary host-connect-btn" id="connectBtn">Connect</button>
+        <span id="hostHint" class="visually-hidden">RoboCap device IP or hostname</span>
+      </form>
+      <div class="header-meta">
+        <span id="deviceLabel" class="device-label">—</span>
+        <div class="connection-chip is-pending" id="connectionChip">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="connectionText">Connecting…</span>
+        </div>
+        <button type="button" class="icon-btn" id="fullscreenBtn" title="Fullscreen all cameras" aria-label="Fullscreen all cameras">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="viewer-main">
+      <section class="camera-grid" id="cameraGrid" aria-label="Live camera feeds"></section>
+
+      <div class="overlay" id="connectOverlay" hidden>
+        <div class="overlay-card">
+          <h2 id="overlayTitle">Waiting for RoboCap</h2>
+          <p id="overlayMessage">Join the Robocap WiFi hotspot, then open this page from the device network.</p>
+          <ul class="overlay-steps">
+            <li>Connect to WiFi: <strong>Robocap_*</strong> (password: <strong>12345678</strong>)</li>
+            <li>Set the device <strong>Host</strong> in the header (default <strong>192.168.11.1</strong>) and click <strong>Connect</strong></li>
+          </ul>
+          <button type="button" class="button primary" id="retryBtn">Retry</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/mqtt.min.js"></script>
+  <script src="js/device.js"></script>
+  <script src="js/viewer.js"></script>
+</body>
+</html>

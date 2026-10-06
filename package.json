@@ -1,0 +1,13 @@
+{
+  "name": "robo-cap-viewer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone 6-camera live viewer for RoboCap",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "http-proxy": "^1.18.1"
+  }
+}
